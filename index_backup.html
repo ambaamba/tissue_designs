@@ -1,0 +1,962 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Paritrāṇa Sari collection</title>
+
+    <script
+  src="jquery-3.5.1.min.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+   <!--  <script src="function.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+
+ <link rel="stylesheet" href="normalize.css">
+  <style type="text/css">
+    * {
+    margin: 0;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    font-family: sans-serif;
+      box-sizing: border-box;
+}
+/*:root {
+    cursor: url(model.png), auto;
+}*/
+/*html {zoom: 160%;}*/
+body {
+   background-color: #e4e0dd;
+}
+
+.wrapper {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+#c {
+    display: block;
+    margin: 20px auto 0;
+}
+#info {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: auto;
+    max-width: 420px;
+    height: auto;
+    background: #f8f8f8;
+    border-bottom-right-radius: 10px;
+    border:1px solid #ccc;
+}
+#top {
+    /*background: #fff;*/
+    width: 100%;
+    height: auto;
+    position: relative;
+  /*  border-bottom: 1px solid #eee;*/
+}
+p {
+    font-family: Arial, sans-serif;
+    color: #666;
+    text-align: justify;
+    font-size: 16px;
+    margin: 0px 16px;
+}
+
+
+.center {
+  text-align: center;
+}
+#net {
+  text-align:center;
+  white-space:nowrap;
+  font-size:19px;
+  background:rgba(0,0,0,0.1);
+  padding:8px 12px;
+  border-radius:8px;
+  display:block;
+  color:#888;
+}
+
+
+
+.bull {
+  opacity: 0.3;
+  margin: 0 6px;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom: 1px solid black;
+}
+
+.column {
+  flex-basis: 100%;
+  border-right: 1px solid black;
+  padding-left: 5px;
+
+}
+.row_1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.column_1 {
+  flex-basis: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .column {
+    flex: 1;
+  }
+   .column_1 {
+    flex: 1;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  ._25 {
+    flex: 1.5;
+  }
+  ._55 {
+    flex: 7.5;
+  }
+  ._20 {
+    flex: 2;
+  }
+}
+ a:link {
+  text-decoration: none;
+}
+
+ a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+background: black;}
+
+ a:active {
+  text-decoration: none;
+    color: white;
+background: black;
+}
+img {
+  text-align: center;
+  justify-content: center;
+  object-position: center;
+  top: 0;
+  left: 0;
+width: 50%;
+height: auto;
+z-index: 1000;
+ 
+}
+
+.signupsubmit {
+    transform: rotateY(50deg) rotateX(50deg);
+    -webkit-transform: rotateY(50deg) rotateX(50deg);
+    transition: 1s;
+                }
+        .signupsubmit:hover {   
+-webkit-transform: rotateY(0deg) rotateX(0deg);
+    transform: rotateY(0deg) rotateX(0deg);
+}
+/*.active {
+    zoom: 160%;
+}*/
+body .cursor {
+  pointer-events: none;
+}
+body .cursor__ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  mix-blend-mode: difference;
+  z-index: 1000;
+}
+body .cursor__ball circle {
+  fill: #f7f8fa;
+}
+
+section {float: left;}
+::selection {
+    background-color: rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+::-moz-selection {
+    background-color: rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a :hover {
+    z-index: 10000000;
+}
+
+.hidden {
+    /* display: none; */
+    opacity: 0;
+}
+
+/* */
+
+.container {
+   position: absolute;
+ /*   top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);*/
+ /* width: 200vh;
+    height: 100vh;*/
+  /*  background-color: aqua;*/
+
+   */
+    overflow: hidden;
+}
+
+.products {
+    position: relative;
+     display: inline-block; 
+  /* width: 1000%;
+    height: 100%;
+    left: 0%;
+   /* background-color: blueviolet;*/*/
+    transition: left .5s ease-in-out;
+}
+
+.product {
+   /* width: 70vh;
+    height: 100%;*/
+    float: left;
+    display: inline-block; 
+}
+
+.product-1 {
+  /*  background-color: beige;*/
+}
+.product-2 {
+    background-color: red;
+}
+.product-3 {
+    background-color: slategray;
+}
+.product-4 {
+    background-color: burlywood;
+}
+
+.buttonLeft, .buttonRight {
+    height: 100%;
+    width: 20%;
+    position: absolute;
+    background-color: red;
+    transition: opacity .5s ease-in-out;
+    top: 50px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.buttonLeft:hover, .buttonRight:hover {
+    opacity: 0.2;
+}
+
+.buttonLeft {
+    left: 0px;
+    cursor: w-resize;
+}
+
+.buttonRight {
+    right: 0px;
+    cursor: e-resize;
+
+}
+ </style>
+ <script>
+function imageZoom(imgID, resultID) {
+  var img, lens, result, cx, cy;
+  img = document.getElementById(imgID);
+  result = document.getElementById(resultID);
+  /*create lens:*/
+  lens = document.createElement("DIV");
+  lens.setAttribute("class", "img-zoom-lens");
+  /*insert lens:*/
+  img.parentElement.insertBefore(lens, img);
+  /*calculate the ratio between result DIV and lens:*/
+  cx = result.offsetWidth / lens.offsetWidth;
+  cy = result.offsetHeight / lens.offsetHeight;
+  /*set background properties for the result DIV:*/
+  result.style.backgroundImage = "url('" + img.src + "')";
+  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+  /*execute a function when someone moves the cursor over the image, or the lens:*/
+  lens.addEventListener("mousemove", moveLens);
+  img.addEventListener("mousemove", moveLens);
+  /*and also for touch screens:*/
+  lens.addEventListener("touchmove", moveLens);
+  img.addEventListener("touchmove", moveLens);
+  function moveLens(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image:*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    /*calculate the position of the lens:*/
+    x = pos.x - (lens.offsetWidth / 2);
+    y = pos.y - (lens.offsetHeight / 2);
+    /*prevent the lens from being positioned outside the image:*/
+    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+    if (x < 0) {x = 0;}
+    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+    if (y < 0) {y = 0;}
+    /*set the position of the lens:*/
+    lens.style.left = x + "px";
+    lens.style.top = y + "px";
+    /*display what the lens "sees":*/
+    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+</script>
+
+</head>
+<body>
+  <!-- cursor -->
+  <div class="cursor">
+    <div class="cursor__ball cursor__ball--big">
+      <svg height="60" width="60">
+        <circle cx="15" cy="15" r="16" stroke-width="0"></circle>
+      </svg>
+    </div>
+    <!-- small ball cursor -->
+    <div class="cursor__ball cursor__ball--small">
+      <svg height="10" width="10">
+        <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+      </svg>
+    </div>
+  </div>
+  <!-- cursor end -->
+  <!-- navigation -->
+  <nav>
+    <div class="row" style="background-color:white;">
+      <div class="column">
+        <a href="">Paritrāṇa Sari collection</a>
+      </div>
+      <div class="column">
+        <a href=""> Concept</a>
+      </div>
+      <div class="column">
+        <a href=""> Process</a>
+      </div>
+    </div>
+    <div class="row" style="background-color:white;">
+      <div class="column">
+        <a href=""> Red sari N°1</a>
+      </div>
+      <div class="column">
+        <a href=""> Orange sari N°2</a>
+      </div>
+      <div class="column">
+        <a href=""> Saffron sari N°3</a>
+      </div>
+      <div class="column">
+        <a href=""> Yellow sari N°4</a>
+      </div>
+      <div class="column">
+        <a href=""> Turmeric sari N°5</a>
+      </div>
+      <div class="column">
+        <a href=""> Green sari N°6</a>
+      </div>
+      <div class="column">
+        <a href=""> Blue sari N°7</a>
+      </div>
+      <div class="column">
+        <a href=""> Pink sari N°8</a>
+      </div>
+      <div class="column">
+        <a href=""> Black sari N°9</a>
+      </div>
+      <div class="column">
+        <a href=""> White sariN°10</a>
+      </div>
+      <div class="column">
+        <a href=""> Violet sari N°11</a>
+      </div>
+    </div>
+  </nav>
+  <!-- navigation end -->
+
+  <!-- wrapper slider -->
+  <section class="container">
+  <div class="products">
+  <div class="wrapper product product-1">
+    <img src="./img.png" style="margin-top: -2000px; position: absolute;" />
+    <canvas
+      width="1900"
+      height="300"
+      style="margin-top: -2000px; position: absolute;"
+    ></canvas>
+
+    <div class="row_1">
+      <!-- <div style="overflow:auto"> -->
+      <div class="column _25" style="overflow-y: auto;">
+        Project photoshoot
+        <div id="img1" class="signupsubmit" style="width:100%;">
+          <img src="model.png" />
+        </div>
+        <div id="img1" class="signupsubmit" style="width:100%;">
+          <img src="model.png" />
+        </div>
+        <div id="img1" class="signupsubmit" style="width:100%;">
+          <img src="model.png" />
+        </div>
+        <div class="signupsubmit" style="width:100%;">
+          <img src="model.png" />
+        </div>
+        <div class="signupsubmit" style="width:100%;">
+          <img src="model.png" />
+        </div>
+      </div>
+
+      <div class="column _55">
+        <canvas id="c" width="800" height="376"> </canvas>
+
+        <div class="row_1">
+          <div class="column_1">
+            <div id="top">
+              <a id="close" href="">Reset tissue —</a>
+            </div>
+          </div>
+          <div class="column_1">
+            <div>
+             <p>This project is based on the red celebratory color………</p>
+             
+            </div>
+          </div>
+          <div class="column_1">
+            <div style="background-color:red;height: 50px;width: 50px;"></div>
+          </div>
+        </div>
+        <div
+          class="column _20 signupsubmit"
+          style="border-top: 1px solid black;border-right: 0px;"
+        >
+          Red is a celebratory color. It commemorates a couple’s union. It
+          symbolizes love, sensuality, and passion. That’s why it features
+          prominently in auspicious occasions, such as weddings, festivals, and
+          births. As red also signifies chastity, it is the color of choice for
+          brides. After the wedding ceremony, the bride adopts a red spot on the
+          forehead called “bindi,” which cements her marital status. When she
+          dies, her family wraps her in red fabric for cremation. As red also
+          depicts dominance, it empowers the saree wearer and draws attention
+          toward her. It’s no surprise that extroverts and A-type personalities
+          prefer red. Pairing a red saree with a gold top amplifies the look. To
+          tone it down, use a silver blouse instead. Accessorize with silver or
+          gold jewelry. Red is associated with Durga, a Hindu goddess with a red
+          tongue, red eyes, and a blazing image. That’s why devotees use it
+          extensively in prayer rituals. Worshippers throw red powder on
+          deities’ statues during prayer ceremonies and phallic symbols because
+          red is the color of Kshatriya, the warrior caste. Designers dress
+          charitable, brave, and protective deities in red. Red also symbolizes
+          fertility and prosperity because it is the color of the clay that
+          produces spices and harvests, which in turn, improve lives.
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="wrapper product product-2" style="float: left;display: inline;clear: both;top: 0;position: absolute;">
+    <img src="./img2.png" style="margin-top: -2000px; position: absolute;" />
+    <canvas
+      width="1900"
+      height="300"
+      style="margin-top: -2000px; position: absolute;"
+    ></canvas>
+
+    <div class="row_1">
+      <!-- <div style="overflow:auto"> -->
+      <div class="column _25" style="overflow-y: auto;">
+        Project photoshoot
+        <div id="img1" class="signupsubmit" style="width:100%;">
+          <img src="model.png" />
+        </div>
+        <div id="img1" class="signupsubmit" style="width:100%;">
+          <img src="model.png" />
+        </div>
+        <div id="img1" class="signupsubmit" style="width:100%;">
+          <img src="model.png" />
+        </div>
+        <div class="signupsubmit" style="width:100%;">
+          <img src="model.png" />
+        </div>
+        <div class="signupsubmit" style="width:100%;">
+          <img src="model.png" />
+        </div>
+      </div>
+
+      <div class="column _55">
+        <canvas id="c" width="800" height="376"> </canvas>
+
+        <div class="row_1">
+          <div class="column_1">
+            <div id="top">
+              <a id="close" href="">Reset tissue —</a>
+            </div>
+          </div>
+          <div class="column_1">
+            <div>
+             <p>This project is based on the red celebratory color………</p>
+             
+            </div>
+          </div>
+          <div class="column_1">
+            <div style="background-color:red;height: 50px;width: 50px;"></div>
+          </div>
+        </div>
+        <div
+          class="column _20 signupsubmit"
+          style="border-top: 1px solid black;border-right: 0px;"
+        >
+          Orange attracts attention and energy like the color red, except it’s more sedate. It signifies freshness and brightness. Not all skin tones can carry this color, but for those whose complexions can pull it off in their clothing, it helps put them in a sunny disposition.
+According to CNN’s Colorscope report, a series exploring color perception across cultures,  many Eastern religions consider orange a sacred color. In Hinduism, orange represents fire and virtuosity. That’s why their monks wear orange robes. Buddhist ones too.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="hidden buttonLeft"><img class="center" src="arrowLeft.png"></div>
+            <div class="hidden buttonRight"><img class="center" src="arrowRight.png"></div>
+</section>
+    <!-- wrapper slider end -->
+
+    <!-- footer -->
+    <footer
+      style="position: fixed;bottom: 0;width: 100%;background-color: white;border-top:1px solid black;"
+    >
+      <div class="row">
+        <div class="column">©Copyright Angelo Barbattini</div>
+        <div class="column">ECAL 2022</div>
+      </div>
+    </footer>
+<!-- footer end -->
+<script type="text/javascript">
+  window.onload = function() {
+
+    
+}
+
+var offsetProducts = 0;
+var numberProducts = 2; //nombre de project -1, car on commence à compter à partir de 0
+
+$(document).ready(function() {
+    console.log("ready!");
+
+
+    // $(".buttonLeft").on("click", function() {
+    //     console.log(offsetProducts);
+    //     if (offsetProducts > numberProducts * -100) offsetProducts = offsetProducts - 100;
+    //     $(".products").css("left", offsetProducts + "%");
+    // });
+
+    // $(".buttonRight").on("click", function() {
+    //     console.log("right Click");
+    //     if (offsetProducts < 0) offsetProducts = offsetProducts + 100;
+    //     $(".products").css("left", offsetProducts + "%");
+    // });
+
+    $(".buttonLeft").on("click", function() {
+        console.log(offsetProducts);
+        if (offsetProducts < 0) offsetProducts = offsetProducts + 100;
+        $(".products").css("left", offsetProducts + "%");
+    });
+
+    $(".buttonRight").on("click", function() {
+        console.log("right Click");
+        if (offsetProducts > numberProducts * -100) offsetProducts = offsetProducts - 100;
+        $(".products").css("left", offsetProducts + "%");
+    });
+    
+});
+
+
+
+
+</script>
+
+
+
+<script type="text/javascript">
+    const mycanvas = document.querySelector('canvas');
+    const mycontext = mycanvas.getContext('2d');
+
+    // settings
+
+
+    var physics_accuracy = 20,
+      mouse_influence = 10,
+      mouse_cut = 6,
+      gravity = 1200,
+      cloth_height = 40,
+      cloth_width = 120,
+      start_y = 10,
+      spacing = 7,
+      tear_distance = 60;
+
+
+    window.requestAnimFrame =
+      window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      function(callback) {
+        window.setTimeout(callback, 1000 / 60);
+      };
+
+    var canvas,
+      ctx,
+      cloth,
+      boundsx,
+      boundsy,
+      mouse = {
+        down: false,
+        button: 1,
+        x: 0,
+        y: 0,
+        px: 0,
+        py: 0
+      };
+
+    window.onload = function() {
+      // ADDED TO BRING IN THE IMAGE
+      mycontext.clearRect(0, 0, mycanvas.width, mycanvas.height);
+      mycontext.drawImage(document.querySelector('img'), 0, 0, 1180, 376);
+
+
+      canvas = document.getElementById('c');
+      ctx = canvas.getContext('2d');
+
+      canvas.width = canvas.clientWidth;
+      canvas.height = 376;
+
+      canvas.onmousedown = function(e) {
+        mouse.button = e.which;
+        mouse.px = mouse.x;
+        mouse.py = mouse.y;
+        var rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left,
+          mouse.y = e.clientY - rect.top,
+          mouse.down = true;
+        e.preventDefault();
+      };
+
+      canvas.onmouseup = function(e) {
+        mouse.down = false;
+        e.preventDefault();
+      };
+
+      canvas.onmousemove = function(e) {
+        mouse.px = mouse.x;
+        mouse.py = mouse.y;
+        var rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left,
+          mouse.y = e.clientY - rect.top,
+          e.preventDefault();
+      };
+
+      canvas.oncontextmenu = function(e) {
+        e.preventDefault();
+      };
+
+      boundsx = canvas.width - 1;
+      boundsy = canvas.height - 1;
+
+      ctx.strokeStyle = 'rgba(222,222,222,0.6)';
+      ctx.strokeStyle = 'magenta';
+      cloth = new Cloth();
+      update();
+    };
+
+    var Point = function(x, y) {
+
+      this.x = x;
+      this.y = y;
+      this.px = x;
+      this.py = y;
+      this.vx = 0;
+      this.vy = 0;
+      this.pin_x = null;
+      this.pin_y = null;
+      this.constraints = [];
+      //added - remember where this point was originally so we can get the right bit of the img
+      this.origx = x;
+      this.origy = y;
+    };
+
+    Point.prototype.update = function(delta) {
+
+      if (mouse.down) {
+
+        var diff_x = this.x - mouse.x,
+          diff_y = this.y - mouse.y,
+          dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y);
+
+        if (mouse.button == 1) {
+
+          if (dist < mouse_influence) {
+            this.px = this.x - (mouse.x - mouse.px) * 1.8;
+            this.py = this.y - (mouse.y - mouse.py) * 1.8;
+          }
+
+        } else if (dist < mouse_cut) this.constraints = [];
+      }
+
+      this.add_force(0, gravity);
+
+      delta *= delta;
+      nx = this.x + ((this.x - this.px) * .99) + ((this.vx / 2) * delta);
+      ny = this.y + ((this.y - this.py) * .99) + ((this.vy / 2) * delta);
+
+      this.px = this.x;
+      this.py = this.y;
+
+      this.x = nx;
+      this.y = ny;
+
+      this.vy = this.vx = 0
+    };
+
+    Point.prototype.draw = function() {
+
+      if (this.constraints.length <= 0) return;
+
+      var i = this.constraints.length;
+      while (i--) this.constraints[i].draw();
+    };
+
+    Point.prototype.resolve_constraints = function() {
+
+      if (this.pin_x != null && this.pin_y != null) {
+
+        this.x = this.pin_x;
+        this.y = this.pin_y;
+        return;
+      }
+
+      var i = this.constraints.length;
+      while (i--) this.constraints[i].resolve();
+
+      this.x > boundsx ? this.x = 2 * boundsx - this.x : 1 > this.x && (this.x = 2 - this.x);
+      this.y < 1 ? this.y = 2 - this.y : this.y > boundsy && (this.y = 2 * boundsy - this.y);
+    };
+
+    Point.prototype.attach = function(point) {
+
+      this.constraints.push(
+        new Constraint(this, point)
+      );
+    };
+
+    Point.prototype.remove_constraint = function(lnk) {
+
+      var i = this.constraints.length;
+      while (i--)
+        if (this.constraints[i] == lnk) this.constraints.splice(i, 1);
+    };
+
+    Point.prototype.add_force = function(x, y) {
+
+      this.vx += x;
+      this.vy += y;
+    };
+
+    Point.prototype.pin = function(pinx, piny) {
+      this.pin_x = pinx;
+      this.pin_y = piny;
+    };
+
+    var Constraint = function(p1, p2) {
+
+      this.p1 = p1;
+      this.p2 = p2;
+      this.length = spacing;
+    };
+
+    Constraint.prototype.resolve = function() {
+
+      var diff_x = this.p1.x - this.p2.x,
+        diff_y = this.p1.y - this.p2.y,
+        dist = Math.sqrt(diff_x * diff_x + diff_y * diff_y),
+        diff = (this.length - dist) / dist;
+
+      if (dist > tear_distance) this.p1.remove_constraint(this);
+
+      var px = diff_x * diff * 0.7;
+      var py = diff_y * diff * 0.5;
+
+      this.p1.x += px;
+      this.p1.y += py;
+      this.p2.x -= px;
+      this.p2.y -= py;
+    };
+    let num = 0;
+    Constraint.prototype.draw = function() {
+
+      ctx.drawImage(mycanvas, this.p1.origx, this.p1.origy, spacing, spacing, this.p1.x, this.p1.y, spacing + 1, spacing + 1);
+    };
+
+    var Cloth = function() {
+
+      this.points = [];
+
+      var start_x = canvas.width / 2 - cloth_width * spacing / 2;
+      // alert(start_x);
+
+      for (var y = 0; y <= cloth_height; y++) {
+
+        for (var x = 0; x <= cloth_width; x++) {
+
+          var p = new Point(start_x + x * spacing, start_y + y * spacing);
+
+          x != 0 && p.attach(this.points[this.points.length - 1]);
+          y == 0 && p.pin(p.x, p.y);
+          y != 0 && p.attach(this.points[x + (y - 1) * (cloth_width + 1)])
+
+          this.points.push(p);
+        }
+      }
+    };
+
+    Cloth.prototype.update = function() {
+
+      var i = physics_accuracy;
+
+      while (i--) {
+        var p = this.points.length;
+        while (p--) this.points[p].resolve_constraints();
+      }
+
+      i = this.points.length;
+      while (i--) this.points[i].update(.016);
+    };
+
+    Cloth.prototype.draw = function() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+
+      var i = cloth.points.length;
+      while (i--) cloth.points[i].draw();
+
+      ctx.stroke();
+    };
+
+    function update() {
+
+      cloth.update();
+      cloth.draw();
+
+      requestAnimFrame(update);
+    }
+  </script>
+  <script>
+imageZoom("myimage", "myresult");
+</script>
+<!--  <script type="text/javascript"> document.body.onclick = function () {document.body.style.zoom="150%"}</script> 
+ -->  <script type="text/javascript"> $('#myButton').click(function() { document.body.style.zoom="160%" });</script> 
+<script type="text/javascript">$(function(){
+    $('h3').click(function(){
+        $('h3.active').removeClass('active');
+        $(this).addClass('active');
+    });
+});</script>
+<script type="text/javascript">const $bigBall = document.querySelector(".cursor__ball--big");
+const $smallBall = document.querySelector(".cursor__ball--small");
+const $hoverables = document.querySelectorAll(".hoverable");
+
+// Listeners
+document.body.addEventListener("mousemove", onMouseMove);
+for (let i = 0; i < $hoverables.length; i++) {
+  $hoverables[i].addEventListener("mouseenter", onMouseHover);
+  $hoverables[i].addEventListener("mouseleave", onMouseHoverOut);
+}
+
+// Move the cursor
+function onMouseMove(e) {
+  TweenMax.to($bigBall, 0.4, {
+    x: e.pageX - 15,
+    y: e.pageY - 15
+  });
+  TweenMax.to($smallBall, 0.1, {
+    x: e.pageX - 5,
+    y: e.pageY - 7
+  });
+}
+
+// Hover an element
+function onMouseHover() {
+  TweenMax.to($bigBall, 0.3, {
+    scale: 4
+  });
+}
+function onMouseHoverOut() {
+  TweenMax.to($bigBall, 0.3, {
+    scale: 1
+  });
+}</script>
+  <script>
+      // Get the img object using its Id
+      img = document.getElementById("img1");
+      // Function to increase image size
+      function enlargeImg() {
+        // Set image size to 1.5 times original
+        img.style.transform = "scale(1.5)";
+        // Animation effect 
+        img.style.transition = "transform 0.25s ease";
+      }
+      // Function to reset image size
+      function resetImg() {
+        // Set image size to original
+        img.style.transform = "scale(1)";
+        img.style.transition = "transform 0.25s ease";
+      }
+    </script>
+</script>
+
+</body>
+</html>
